@@ -32,7 +32,7 @@ public class SimpleProductCatalog implements ProductCatalog {
 	
 	private void add(String name, int price) {
 		Product product = new Product(idGenerator.nextId("Product"), name, price);
-		productMap.put(product.getId(), product);
+		addProduct(product);
 	}
 	
 	@Override
@@ -55,7 +55,17 @@ public class SimpleProductCatalog implements ProductCatalog {
 	}
 	@Override
 	public void addProduct(String productName, String price) {
-		add(productName, Integer.parseInt(price));
+		addProduct(productName, Integer.parseInt(price));
+	}
+
+	@Override
+	public void addProduct(String productName, Integer price) {
+		add(productName, price);
+	}
+
+	@Override
+	public void addProduct(Product product) {
+		productMap.put(product.getId(), product);		
 	}
 
 }
