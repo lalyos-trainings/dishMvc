@@ -27,7 +27,8 @@ public class ProductController {
 	}
 	
 	@RequestMapping("form")
-	public String newProduct() {
+	public String newProduct(Model model) {
+		model.addAttribute("product", new Product());
 		return "newProduct";
 	}
 	

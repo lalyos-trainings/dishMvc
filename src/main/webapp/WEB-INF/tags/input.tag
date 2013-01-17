@@ -12,12 +12,8 @@
 <div class="control-group ${not empty filedError ? 'error' : '' }">
     <label class="control-label" for="${name}">${name}</label>
     <div class="controls">
-      <input type="text" name="${name}" id="${name}" placeholder="${name}" value="${value}"
-      <c:forEach items="${dynamo }" var="entry">
-      	${entry.key}="${entry.value}"
-      </c:forEach> 
-
-      />
+      
+      <form:input path="${name}" placeholder="${name}"  />      
       
 	<c:if test="${not empty filedError}">
       <span class="help-inline">${filedError }</span>
