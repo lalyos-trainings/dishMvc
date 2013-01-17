@@ -11,15 +11,21 @@ public class ProductController {
 	@Autowired
 	private ProductCatalog catalog;
 	
-	@RequestMapping("/products")
+	@RequestMapping("/product/list")
 	public String list(Model model) {
 		
 		model.addAttribute("products", catalog.getProducts());
 		return "listProducts";
 	}
 	
-	@RequestMapping("/newProduct")
+	@RequestMapping("/product/form")
 	public String newProduct() {
 		return "newProduct";
 	}
+	
+	@RequestMapping("/product/add")
+	public String add() {
+		return "xxx";
+	}
+
 }

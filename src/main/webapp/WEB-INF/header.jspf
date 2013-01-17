@@ -50,8 +50,8 @@
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
               
-              <iron:menuItem label="Products" url="/products" />
-              <iron:menuItem label="New Product" url="/newProduct" />
+              <iron:menuItem label="Products" url="/product/list" />
+              <iron:menuItem label="New Product" url="/product/form" />
                             
             </ul>
           </div><!--/.nav-collapse -->
