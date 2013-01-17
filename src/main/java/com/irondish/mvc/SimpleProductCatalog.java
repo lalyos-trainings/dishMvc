@@ -65,6 +65,9 @@ public class SimpleProductCatalog implements ProductCatalog {
 
 	@Override
 	public void addProduct(Product product) {
+		if (product.getId() == null) {
+			product.setId(idGenerator.nextId("Product"));
+		}
 		productMap.put(product.getId(), product);		
 	}
 
