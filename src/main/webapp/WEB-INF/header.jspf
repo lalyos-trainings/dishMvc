@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib tagdir="/WEB-INF/tags"  prefix="iron"%>
     
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -49,11 +50,9 @@
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
               
-              <c:url value="/products"  var="productsUrl" />
-              
-              	<li><a href="${productsUrl}">products</a></li>
-              
-              
+              <iron:menuItem label="Products" url="/products" />
+              <iron:menuItem label="New Product" url="/newProduct" />
+                            
             </ul>
           </div><!--/.nav-collapse -->
           <div class="nav-collapse collapse pull-right">

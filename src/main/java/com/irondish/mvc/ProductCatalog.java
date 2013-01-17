@@ -7,7 +7,7 @@ import com.irondish.mvc.Product;
 public interface ProductCatalog {
 
 	public void addProduct(String productName, String price);
-	public Product findByName(String productName);
+	public Product findById(Long id);
 	public List<Product> getProducts();
-	public void deleteProduct(String productName);
+	public void deleteProduct(Long id);
 }

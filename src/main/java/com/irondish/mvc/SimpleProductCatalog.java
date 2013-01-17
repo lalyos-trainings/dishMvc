@@ -5,29 +5,41 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SimpleProductCatalog implements ProductCatalog {
 
-	Map<String, Product> productMap = new HashMap<String, Product>();
+	Map<Long, Product> productMap = new HashMap<Long, Product>();
+	
+	@Autowired
+	private IdGenerator idGenerator;
 	
 	public SimpleProductCatalog() {
-		add(new Product("iron bucket", 100));
-		add(new Product("wooden bucket", 150));
-		add(new Product("diamond bucket", 999999));
-		add(new Product("plastic bucket", 50));
+	}
+
+	@PostConstruct
+	public void init() {
+		add("iron bucket", 100);
+		add("wooden bucket", 150);
+		add("diamond bucket", 999999);
+		add("plastic bucket", 50);
 
 	}
-	private void add(Product product) {
-		productMap.put(product.getName(), product);
+	
+	private void add(String name, int price) {
+		Product product = new Product(idGenerator.nextId("Product"), name, price);
+		productMap.put(product.getId(), product);
 	}
 	
 	@Override
-	public Product findByName(String productName) {
-		Product product = productMap.get(productName);
+	public Product findById(Long id) {
+		Product product = productMap.get(id);
 		if (product == null) {
-			throw new RuntimeException(productName);
+			throw new RuntimeException("Product id not found: " + id);
 		}
 		return product;
 	}
@@ -37,13 +49,13 @@ public class SimpleProductCatalog implements ProductCatalog {
 		return new ArrayList<Product>(productMap.values());
 	}
 	@Override
-	public void deleteProduct(String productName) {
-		System.out.println("deleting product: ...." + productName);
-		productMap.remove(productName);
+	public void deleteProduct(Long id) {
+		System.out.println("deleting product: ...." + id);
+		productMap.remove(id);
 	}
 	@Override
 	public void addProduct(String productName, String price) {
-		add(new Product(productName, Integer.parseInt(price)));
+		add(productName, Integer.parseInt(price));
 	}
 
 }

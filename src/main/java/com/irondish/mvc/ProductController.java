@@ -17,4 +17,9 @@ public class ProductController {
 		model.addAttribute("products", catalog.getProducts());
 		return "listProducts";
 	}
+	
+	@RequestMapping("/newProduct")
+	public String newProduct() {
+		return "newProduct";
+	}
 }
