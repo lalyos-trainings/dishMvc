@@ -1,12 +1,5 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<c:if test="${not empty errorMsg }">
-<div class="alert alert-error">
-  ${errorMsg }
-</div>
-</c:if>
-
-<ul>
 
 <h2>new Product</h2>
 

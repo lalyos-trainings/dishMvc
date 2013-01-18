@@ -4,7 +4,6 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ tag display-name="input" description="" small-icon="" body-content="empty" dynamic-attributes="dynamo" %>
 <%@ attribute name="name" description="" required="true" type="java.lang.String" %>
-<%@ attribute name="value" description="" required="true" type="java.lang.String" %>
 
 
 <c:set var="filedError" ><form:errors path="${name}" /></c:set>

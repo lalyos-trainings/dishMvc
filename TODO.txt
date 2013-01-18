@@ -1,0 +1,7 @@
+- jsp: @tag variable
+- @JSR 303 validation
+- logback
+- @pathvariable
+- http://static.springsource.org/spring/docs/3.0.0.M3/reference/html/ch16s11.html#mvc-ann-requestmapping-arguments
+- json
+- org.springframework.validation.DefaultMessageCodesResolver

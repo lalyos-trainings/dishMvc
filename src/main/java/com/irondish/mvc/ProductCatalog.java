@@ -12,4 +12,5 @@ public interface ProductCatalog {
 	public Product findById(Long id);
 	public List<Product> getProducts();
 	public void deleteProduct(Long id);
+	public List<Product> findByMaxPrice(Integer maxPrice);
 }

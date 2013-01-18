@@ -3,8 +3,8 @@
 <%@ tag display-name="" description="" small-icon="" body-content="scriptless" %>
 <%@ attribute name="min" description="" required="true" type="java.lang.Integer" %>
 <%@ attribute name="max" description="" required="true" type="java.lang.Integer" %>
-<%@ attribute name="var" description="" required="false" %>
-<%@ variable variable-class="java.lang.Integer" description="" name-from-attribute="var" alias="x" %>
+<%@ attribute name="var" description="" required="true"  rtexprvalue="false" %>
+<%@ variable variable-class="java.lang.Integer" description="" name-from-attribute="var" alias="x" scope="NESTED"  %>
 
   <c:forEach begin="${min}" end="${max}" varStatus="stat" >
     <c:set var="x" value="${(max-stat.index) + 1}" />

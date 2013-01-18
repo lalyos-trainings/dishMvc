@@ -1,5 +1,7 @@
 package com.irondish.mvc;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -44,6 +47,47 @@ public class ProductController {
 		
 		return "redirect:/product/list";
 	}
+	
+	@RequestMapping("edit")
+	public String edit(Model model, @RequestParam Long id) {
+		
+		Product product = catalog.findById(id);
+		model.addAttribute("product", product);
+		
+		return "editProduct";
+	}
+
+	@RequestMapping("delete")
+	public String delete(Model model, @RequestParam Long id) {
+
+		catalog.deleteProduct(id);
+		return "redirect:/product/list";
+	}
+
+	@RequestMapping(value="search", method=RequestMethod.GET)
+	public String searchForm() {
+		return "searchForm";
+	}
+
+	@RequestMapping(value="search", method=RequestMethod.POST)
+	public String search(@RequestParam Integer maxPrice, Model model) {
+		List<Product> products = catalog.findByMaxPrice(maxPrice);
+		model.addAttribute("products", products);
+		
+		return "searchResult";
+	}
+
+	
+	@RequestMapping("save")
+	public String save(@ModelAttribute Product product, BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("product", product);
+			return "editProduct";
+		}
+		catalog.addProduct(product);
+		return "redirect:/product/list";
+	}
+
 	
 	@ExceptionHandler(Exception.class)
 	public String bajVan() {

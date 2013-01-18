@@ -71,4 +71,15 @@ public class SimpleProductCatalog implements ProductCatalog {
 		productMap.put(product.getId(), product);		
 	}
 
+	@Override
+	public List<Product> findByMaxPrice(Integer maxPrice) {
+		ArrayList<Product> ret = new ArrayList<Product>();
+		for (Product product : productMap.values()) {
+			if (product.getPrice() <= maxPrice) {
+				ret.add(product);
+			}
+		}
+		return ret;
+	}
+
 }

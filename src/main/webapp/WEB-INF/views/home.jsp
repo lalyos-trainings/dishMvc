@@ -10,3 +10,5 @@
  <li>${barmi}. hello</li>
 </iron:reverse>
 </ul>
+
+barmi = ${barmi}
